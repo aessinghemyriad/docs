@@ -1,0 +1,241 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "Payment service",
+      "version": "0.1.0"
+    },
+    "servers": [
+      {
+        "url": "/api/"
+      }
+    ],
+    "paths": {
+      "/v1/payments": {
+        "post": {
+          "description": "Initiate a new payment request",
+          "operationId": "CreatePaymentRequest",
+          "parameters": [
+            {
+              "name": "X-Userinfo-Merchant-Id",
+              "in": "header",
+              "description": "ID of the merchant performing the request",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            {
+              "name": "X-Userinfo-Customer-Id",
+              "in": "header",
+              "description": "ID of the customer performing the request",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Payment request details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "202": {
+              "description": "Payment request is being processed",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TransactionResponse"
+                  }
+                }
+              }
+            },
+            "default": {
+              "description": "An error occurred",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          },
+          "x-codegen-request-body-name": "payment_request"
+        }
+      },
+      "/v1/transactions/{id}": {
+        "get": {
+          "description": "Get details about a transaction",
+          "operationId": "GetOneTransaction",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the transaction to retrieve",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "X-Userinfo-Merchant-Id",
+              "in": "header",
+              "description": "ID of the merchant performing the request",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            {
+              "name": "X-Userinfo-Customer-Id",
+              "in": "header",
+              "description": "ID of the customer performing the request",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The transaction corresponding to the ID",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TransactionResponse"
+                  }
+                }
+              }
+            },
+            "default": {
+              "description": "An error occurred",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/health": {
+        "get": {
+          "description": "Health check",
+          "operationId": "HealthCheck",
+          "responses": {
+            "200": {
+              "description": "Successful health check response",
+              "content": {}
+            },
+            "500": {
+              "description": "Failure response",
+              "content": {}
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "PaymentRequest": {
+          "required": [
+            "amount",
+            "callback",
+            "currency",
+            "payer_wallet",
+            "payment_provider"
+          ],
+          "type": "object",
+          "properties": {
+            "payment_provider": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "payer_wallet": {
+              "type": "string"
+            },
+            "amount": {
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            },
+            "currency": {
+              "pattern": "^[A-Z]{3}$",
+              "type": "string",
+              "description": "ISO 4217 currency code"
+            },
+            "callback": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "TransactionResponse": {
+          "required": [
+            "amount",
+            "currency",
+            "id",
+            "payer_wallet",
+            "payment_provider",
+            "status"
+          ],
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "external_id": {
+              "type": "string"
+            },
+            "payment_provider": {
+              "type": "string"
+            },
+            "payer_wallet": {
+              "type": "string"
+            },
+            "amount": {
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            },
+            "currency": {
+              "pattern": "^[A-Z]{3}$",
+              "type": "string",
+              "description": "ISO 4217 currency code"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "pending",
+                "succeeded",
+                "aborted"
+              ]
+            }
+          }
+        },
+        "ErrorResponse": {
+          "required": [
+            "error"
+          ],
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "string",
+              "readOnly": true
+            }
+          }
+        }
+      }
+    },
+    "x-original-swagger-version": "2.0"
+  }
+  
