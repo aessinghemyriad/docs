@@ -9,40 +9,7 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "tabs": [
-      {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "introduction",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Essentials",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Payment API",
-        "openapi":"api-reference/payment-api.json"
-      },
-      {
-        "tab": "Billers API",
-        "openapi": "api-reference/billers-api.json"
-    }
-    ],
+
     "global": {
       "anchors": [
         {
@@ -54,21 +21,82 @@
           "anchor": "Blog",
           "href": "https://connect.myriadgroup.com/nouvelles-et-apercu/",
           "icon": "newspaper"
+        },
+        {
+          "anchor": "Support",
+          "href": "mailto:EXT_FRA_MOBILEOPS_SUPPORT@myriadgroup.com",
+          "icon": "headphones"
         }
       ]
-    }
+    },
+    
+    "tabs": [
+      {
+        "tab": "Home",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "home/introduction",
+              "home/authentication",
+              "home/environments"
+            ]
+          }
+        ]
+      },
+
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Pay",
+            "pages": [
+              "guides/create-payment"
+            ]
+          },
+          {
+            "group": "Bills",
+            "pages": [
+              "home/introduction",
+              "home/authentication",
+              "home/environments"
+            ]
+          }
+        ]
+      },
+
+      { 
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Payment",
+            "openapi": "api-reference/payment-api.json"
+          },
+          {
+            "group": "Billers",
+            "openapi": "api-reference/billers-api.json"
+          }
+        ]
+      },
+
+      {
+        "tab": "Payment",
+        "openapi": "api-reference/payment-api.json"
+      },
+      {
+        "tab": "Billers",
+        "openapi": "api-reference/billers-api.json"
+      }
+
+    ]
+
   },
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:EXT_FRA_MOBILEOPS_SUPPORT@myriadgroup.com"
-      }
-    ],
+
     "primary": {
       "type": "button",
       "label": "Dashboard",
