@@ -77,15 +77,6 @@
             "openapi": "api-reference/billers-api.json"
           }
         ]
-      },
-
-      {
-        "tab": "Payment",
-        "openapi": "api-reference/payment-api.json"
-      },
-      {
-        "tab": "Billers",
-        "openapi": "api-reference/billers-api.json"
       }
 
     ]
