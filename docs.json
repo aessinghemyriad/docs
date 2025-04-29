@@ -82,7 +82,7 @@
         "tab": "Release Logs",
         "icon": "",
         "pages": [
-          "introduction"
+          "release-logs/release-logs"
         ]
       }
 
