@@ -32,14 +32,15 @@
     
     "tabs": [
       {
-        "tab": "Home",
+        "tab": "Introduction",
+        "icon": "book-open",
         "groups": [
           {
             "group": "Get Started",
             "pages": [
-              "home/introduction",
-              "home/authentication",
-              "home/environments"
+              "introduction/overview",
+              "introduction/authentication",
+              "introduction/environments"
             ]
           }
         ]
@@ -57,9 +58,7 @@
           {
             "group": "Bills",
             "pages": [
-              "home/introduction",
-              "home/authentication",
-              "home/environments"
+              "guides/create-payment"
             ]
           }
         ]
@@ -76,6 +75,14 @@
             "group": "Billers",
             "openapi": "api-reference/billers-api.json"
           }
+        ]
+      },
+
+      {
+        "tab": "Release Logs",
+        "icon": "",
+        "pages": [
+          "introduction"
         ]
       }
 
