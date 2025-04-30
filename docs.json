@@ -36,11 +36,18 @@
         "icon": "book-open",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Getting Started",
             "pages": [
               "introduction/overview",
               "introduction/authentication",
               "introduction/environments"
+            ]
+          },
+          {
+            "group": "Technical Specification", 
+            "pages": [
+              "introduction/status-code",
+              "introduction/rate-limits"
             ]
           }
         ]
@@ -50,7 +57,7 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Pay",
+            "group": "Payment",
             "pages": [
               "guides/create-payment"
             ]
