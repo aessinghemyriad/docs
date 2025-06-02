@@ -7,7 +7,12 @@
     },
     "servers": [
       {
-        "url": "https://cf85-154-125-8-19.ngrok-free.app/"
+        "url": "http://api.demo.mgrp.mobi/"
+      }
+    ],
+    "security": [
+      {
+        "bearerAuth": []
       }
     ],
     "tags": [
@@ -28,7 +33,7 @@
       }
     ],
     "paths": {
-      "/api/v1/billers": {
+      "/billers/v1/billers": {
         "get": {
           "tags": [
             "Billers"
@@ -144,7 +149,7 @@
           "x-codegen-request-body-name": "payload"
         }
       },
-      "/api/v1/billers/transactions": {
+      "/billers/v1/billers/transactions": {
         "get": {
           "tags": [
             "Transactions"
@@ -229,7 +234,7 @@
           }
         }
       },
-      "/api/v1/billers/transactions/{txn_id}": {
+      "/billers/v1/billers/transactions/{txn_id}": {
         "get": {
           "tags": [
             "Transactions"
@@ -315,7 +320,7 @@
           }
         }
       },
-      "/api/v1/billers/{biller_id}": {
+      "/billers/v1/billers/{biller_id}": {
         "get": {
           "tags": [
             "Billers"
@@ -401,7 +406,7 @@
           }
         }
       },
-      "/api/v1/billers/{biller_name}/bills": {
+      "/billers/v1/billers/{biller_name}/bills": {
         "get": {
           "tags": [
             "Bills"
@@ -443,7 +448,7 @@
           }
         }
       },
-      "/api/v1/billers/{biller_name}/bills/{bill_id}": {
+      "/billers/v1/billers/{biller_name}/bills/{bill_id}": {
         "get": {
           "tags": [
             "Bills"
@@ -514,7 +519,7 @@
           }
         }
       },
-      "/api/v1/billers/{biller_name}/bills/{bill_id}/payment": {
+      "/billers/v1/billers/{biller_name}/bills/{bill_id}/payment": {
         "post": {
           "tags": [
             "Payment"
@@ -603,7 +608,7 @@
           "x-codegen-request-body-name": "payload"
         }
       },
-      "/api/v1/billers/{biller_name}/bills/{bill_id}/payment/{txn_id}/callback": {
+      "/billers/v1/billers/{biller_name}/bills/{bill_id}/payment/{txn_id}/callback": {
         "post": {
           "tags": [
             "Payment"
@@ -677,7 +682,7 @@
           "x-codegen-request-body-name": "payload"
         }
       },
-      "/api/v1/health": {
+      "/billers/v1/health": {
         "get": {
           "tags": [
             "Health"
@@ -710,6 +715,12 @@
       }
     },
     "components": {
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer"
+        }
+      }, 
       "schemas": {
         "Biller": {
           "required": [
