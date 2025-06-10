@@ -1,0 +1,3828 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "version": "0.1",
+      "title": "B2W core logic"
+    },
+    "servers": [
+      {
+        "url": "https://api.mgrp.mobi/"
+      }
+    ],
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "paths": {
+      "/api/v0.1/partners": {
+        "get": {
+          "summary": "Get partners list",
+          "operationId": "B2wCoreLogicWeb.PartnerController.index",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Partner"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Partner"
+          ]
+        },
+        "post": {
+          "summary": "Create a partner",
+          "operationId": "B2wCoreLogicWeb.PartnerController.create",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartnerRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Partner"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Unprocessable Entity",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_422"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Partner"
+          ]
+        }
+      },
+      "/api/v0.1/partners/{partner_id}": {
+        "get": {
+          "summary": "Get partner by ID",
+          "operationId": "B2wCoreLogicWeb.PartnerController.show",
+          "parameters": [
+            {
+              "name": "partner_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Partner"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Partner"
+          ]
+        },
+        "put": {
+          "summary": "Update partner",
+          "operationId": "B2wCoreLogicWeb.PartnerController.update",
+          "parameters": [
+            {
+              "name": "partner_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartnerRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Partner"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Unprocessable Entity",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_422"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Partner"
+          ]
+        },
+        "delete": {
+          "summary": "Delete a partner",
+          "operationId": "B2wCoreLogicWeb.PartnerController.delete",
+          "parameters": [
+            {
+              "name": "partner_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No Content"
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Partner"
+          ]
+        }
+      },
+      "/api/v0.1/users": {
+        "get": {
+          "summary": "Get users list",
+          "operationId": "B2wCoreLogicWeb.UserController.index",
+          "parameters": [
+            {
+              "name": "user_identity",
+              "in": "query",
+              "description": "User identity to filter users. Could be MSISDN, user name or email address",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "status",
+              "in": "query",
+              "description": "User status to filter users. Could be `active` or `blocked`",
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "active",
+                  "blocked"
+                ]
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "Maximum number of users to retrieve",
+              "schema": {
+                "type": "integer",
+                "default": 10
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "description": "Offset for pagination",
+              "schema": {
+                "type": "integer",
+                "default": 0
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UsersResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "User"
+          ]
+        },
+        "post": {
+          "summary": "Create a user",
+          "operationId": "B2wCoreLogicWeb.UserController.create",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Unprocessable Entity",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_422"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "User"
+          ]
+        }
+      },
+      "/api/v0.1/users/{user_id}": {
+        "get": {
+          "summary": "Get user by ID",
+          "operationId": "B2wCoreLogicWeb.UserController.show",
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "User"
+          ]
+        },
+        "put": {
+          "summary": "Update user",
+          "operationId": "B2wCoreLogicWeb.UserController.update",
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Unprocessable Entity",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_422"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "User"
+          ]
+        },
+        "delete": {
+          "summary": "Delete a user",
+          "operationId": "B2wCoreLogicWeb.UserController.delete",
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No Content"
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "User"
+          ]
+        }
+      },
+      "/api/v0.1/linked_partners": {
+        "get": {
+          "summary": "Get linked partners list",
+          "operationId": "B2wCoreLogicWeb.LinkedPartnerController.index",
+          "parameters": [
+            {
+              "name": "bank_id",
+              "in": "query",
+              "description": "Bank id to filter linked partners",
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "eme_id",
+              "in": "query",
+              "description": "EME id to filter linked partners",
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "Maximum number of linked partners to retrieve",
+              "schema": {
+                "type": "integer",
+                "default": 10
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "description": "Offset for pagination",
+              "schema": {
+                "type": "integer",
+                "default": 0
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LinkedPartnerItems"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "LinkedPartner"
+          ]
+        },
+        "post": {
+          "summary": "Link a pair of partners",
+          "operationId": "B2wCoreLogicWeb.LinkedPartnerController.create",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartnersForLinking"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LinkedPartnerPair"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Unprocessable Entity",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_422"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "LinkedPartner"
+          ]
+        }
+      },
+      "/api/v0.1/linked_partners/{linked_partner_id}": {
+        "get": {
+          "summary": "Get linked partner by ID",
+          "operationId": "B2wCoreLogicWeb.LinkedPartnerController.show",
+          "parameters": [
+            {
+              "name": "linked_partner_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LinkedPartnerPair"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "LinkedPartner"
+          ]
+        },
+        "put": {
+          "summary": "Update linked partner",
+          "operationId": "B2wCoreLogicWeb.LinkedPartnerController.update",
+          "parameters": [
+            {
+              "name": "linked_partner_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateLinkedPartnerRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LinkedPartnerPair"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Unprocessable Entity",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_422"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "LinkedPartner"
+          ]
+        },
+        "delete": {
+          "summary": "Delete a linked partner",
+          "operationId": "B2wCoreLogicWeb.LinkedPartnerController.delete",
+          "parameters": [
+            {
+              "name": "linked_partner_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No Content"
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "LinkedPartner"
+          ]
+        }
+      },
+      "/api/v0.1/linked_accounts": {
+        "get": {
+          "summary": "Get linked accounts list",
+          "operationId": "B2wCoreLogicWeb.LinkedAccountController.index",
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "query",
+              "description": "User ID to filter linked accounts",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "linked_partner_id",
+              "in": "query",
+              "description": "Linked partner ID to filter linked accounts",
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "status",
+              "in": "query",
+              "description": "Status of the linked account",
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "approved",
+                  "rejected",
+                  "pending",
+                  "suspended"
+                ]
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "Maximum number of linked accounts to retrieve",
+              "schema": {
+                "type": "integer",
+                "default": 10
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "description": "Offset for pagination",
+              "schema": {
+                "type": "integer",
+                "default": 0
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LinkedAccountsResponse"
+                  },
+                  "examples": {
+                    "Linked Account List": {
+                      "value": {
+                        "total_count": 1,
+                        "linked_accounts": [
+                          {
+                            "account": "12341234123456",
+                            "account_alias": "BANKIDAZ01234567891011",
+                            "bank_provider": {
+                              "country_code": 100,
+                              "id": 3,
+                              "name": "eco_bank"
+                            },
+                            "eme_provider": {
+                              "country_code": 100,
+                              "id": 4,
+                              "name": "MTN",
+                              "sub_id": 0
+                            },
+                            "id": 1,
+                            "status": "approved",
+                            "token": "shK0ZQdJ",
+                            "user_id": "66345c38-f532-4625-9e87-5fdeb4e7130f"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "LinkedAccount"
+          ]
+        },
+        "post": {
+          "summary": "Link an account",
+          "operationId": "B2wCoreLogicWeb.LinkedAccountController.create",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LinkedAccountRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LinkedAccount"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Unprocessable Entity",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_422"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "LinkedAccount"
+          ]
+        },
+        "delete": {
+          "summary": "Delete linked accounts by batch",
+          "operationId": "B2wCoreLogicWeb.LinkedAccountController.batchDelete",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchDeleteRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BatchDeleteResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "LinkedAccount"
+          ]
+        }
+      },
+      "/api/v0.1/linked_accounts/{linked_account_id}": {
+        "get": {
+          "summary": "Get linked account by ID",
+          "operationId": "B2wCoreLogicWeb.LinkedAccountController.show",
+          "parameters": [
+            {
+              "name": "linked_account_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LinkedAccount"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "LinkedAccount"
+          ]
+        },
+        "put": {
+          "summary": "Update linked account",
+          "operationId": "B2wCoreLogicWeb.LinkedAccountController.update",
+          "parameters": [
+            {
+              "name": "linked_account_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateLinkedAccountRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LinkedAccount"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Unprocessable Entity",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_422"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "LinkedAccount"
+          ]
+        },
+        "delete": {
+          "summary": "Delete a linked account",
+          "operationId": "B2wCoreLogicWeb.LinkedAccountController.delete",
+          "parameters": [
+            {
+              "name": "linked_account_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No Content"
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "LinkedAccount"
+          ]
+        }
+      },
+      "/api/v0.1/transactions": {
+        "get": {
+          "summary": "Get transaction list",
+          "operationId": "B2wCoreLogicWeb.TransactionController.index",
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "query",
+              "description": "User ID to filter transactions",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "transaction_id",
+              "in": "query",
+              "description": "Transaction ID to filter transactions",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "status",
+              "in": "query",
+              "description": "Transaction status to filter transactions. Could be `success`, `pending`, `failed`",
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "success",
+                  "pending",
+                  "failed"
+                ]
+              }
+            },
+            {
+              "name": "type",
+              "in": "query",
+              "description": "Transaction type to filter transactions. Could be `B2W` or `W2B`",
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "B2W",
+                  "W2B"
+                ]
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "Maximum number of transactions to retrieve",
+              "schema": {
+                "type": "integer",
+                "default": 10
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "description": "Offset for pagination",
+              "schema": {
+                "type": "integer",
+                "default": 0
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TransactionItems"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Transaction"
+          ]
+        },
+        "post": {
+          "summary": "Create a transaction",
+          "operationId": "B2wCoreLogicWeb.TransactionController.create",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateTransactionRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TransactionItem"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Unprocessable Entity",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_422"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Transaction"
+          ]
+        }
+      },
+      "/api/v0.1/transactions/{transaction_id}": {
+        "get": {
+          "summary": "Get transaction by ID",
+          "operationId": "B2wCoreLogicWeb.TransactionController.show",
+          "parameters": [
+            {
+              "name": "transaction_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TransactionItem"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Transaction"
+          ]
+        },
+        "put": {
+          "summary": "Update transaction",
+          "operationId": "B2wCoreLogicWeb.TransactionController.update",
+          "parameters": [
+            {
+              "name": "transaction_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateTransactionRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TransactionItem"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Unprocessable Entity",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_422"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Transaction"
+          ]
+        }
+      },
+      "/api/v0.1/transactions/{transaction_id}/sub_transactions": {
+        "get": {
+          "summary": "Get sub transaction list of a given transaction",
+          "operationId": "B2wCoreLogicWeb.SubTransactionController.index",
+          "parameters": [
+            {
+              "name": "transaction_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SubTransactionDetailsItems"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Transaction"
+          ]
+        },
+        "post": {
+          "summary": "Continue a transaction that is pending for more info",
+          "operationId": "B2wCoreLogicWeb.SubTransactionController.create",
+          "parameters": [
+            {
+              "name": "transaction_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Transaction_continue"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Transaction_handling_response"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Forbidden",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_403"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_404"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Unprocessable Entity",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_422"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Transaction"
+          ]
+        }
+      },
+      "/api/v0.1/version": {
+        "get": {
+          "summary": "Get version of the B2W core logic API",
+          "operationId": "B2wCoreLogicWeb.VersionController.show",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/VersionResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Version"
+          ]
+        }
+      },
+      "/api/v0.1/tokens": {
+        "get": {
+          "summary": "Get token list",
+          "operationId": "B2wCoreLogicWeb.TokenController.index",
+          "parameters": [
+            {
+              "name": "user_identity",
+              "in": "query",
+              "description": "User identity to filter tokens. Could be MSISDN, user name or email address",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "bank_id",
+              "in": "query",
+              "description": "Bank ID to filter tokens",
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "eme_id",
+              "in": "query",
+              "description": "EME ID to filter tokens",
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "status",
+              "in": "query",
+              "description": "Status of the token, could be `approved`, `rejected`, `pending`, `suspended`",
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "approved",
+                  "rejected",
+                  "pending",
+                  "suspended"
+                ]
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "Maximum number of tokens to retrieve",
+              "schema": {
+                "type": "integer",
+                "default": 10
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "description": "Offset for pagination",
+              "schema": {
+                "type": "integer",
+                "default": 0
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Tokens"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "User"
+          ]
+        },
+        "post": {
+          "summary": "Generate a token",
+          "operationId": "B2wCoreLogicWeb.TokenController.create",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenerateTokenRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Token"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Unprocessable Entity",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_422"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "User"
+          ]
+        }
+      },
+      "/api/v0.1/validation_methods": {
+        "get": {
+          "summary": "Validation Method list",
+          "operationId": "B2wCoreLogicWeb.ValidationMethodController.index",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ValidationMethods"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_400"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_401"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error_500"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "User"
+          ]
+        }
+      }
+    },
+    "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }, 
+      "schemas": {
+        "Partner": {
+          "description": "A partner",
+          "example": {
+            "bic_code": "MYRIFRPA",
+            "country_code": 100,
+            "id": 1,
+            "name": "MTN",
+            "type": "EME"
+          },
+          "properties": {
+            "bic_code": {
+              "description": "The SWIFT code of the bank partner or the BIC code of MoMo partner if any",
+              "type": "string"
+            },
+            "country_code": {
+              "description": "The country code of the partner",
+              "type": "string"
+            },
+            "id": {
+              "description": "The partner id",
+              "type": "integer"
+            },
+            "name": {
+              "description": "The partner name",
+              "type": "string"
+            },
+            "type": {
+              "description": "The partner type. Could be \"EME\" or \"Bank\"",
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "name",
+            "id"
+          ],
+          "title": "Partner",
+          "type": "object"
+        },
+        "FinishLinkRequest": {
+          "description": "The request body of linking an account by end user",
+          "example": {
+            "account": "2131231124214124",
+            "bank_provider_id": 2,
+            "eme_provider_id": 1,
+            "initiated_user_identity": "1231231234",
+            "token": "WERTQ2ST"
+          },
+          "properties": {
+            "account": {
+              "description": "The account to be linked",
+              "type": "string"
+            },
+            "bank_provider_id": {
+              "description": "The id of the bank provider where the account linking is associated",
+              "type": "integer"
+            },
+            "eme_provider_id": {
+              "description": "The id of the EME provider where the account linking is associated",
+              "type": "integer"
+            },
+            "eme_provider_sub_id": {
+              "description": "The sub id of the EME provider where the account linking is associated",
+              "type": "integer"
+            },
+            "initiated_user_identity": {
+              "description": "The user identity who initiates the linking",
+              "type": "string"
+            },
+            "token": {
+              "description": "The token for the account linking",
+              "type": "string"
+            }
+          },
+          "required": [
+            "token",
+            "account",
+            "initiated_user_identity",
+            "bank_provider_id",
+            "eme_provider_id"
+          ],
+          "title": "The request body of linking an account",
+          "type": "object"
+        },
+        "UpdateLinkedAccountRequest": {
+          "description": "Request for updating a linked account",
+          "example": {
+            "status": "approved"
+          },
+          "properties": {
+            "status": {
+              "description": "Status of the linked account, could be `approved`, `rejected`, `pending`, `suspended`",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status"
+          ],
+          "title": "Update linked account request body",
+          "type": "object"
+        },
+        "User": {
+          "description": "A user",
+          "example": {
+            "id": "q231232weq-3123123-2313",
+            "status": "active",
+            "user_identity": "123456789"
+          },
+          "properties": {
+            "id": {
+              "description": "The user id",
+              "type": "string"
+            },
+            "status": {
+              "description": "The user status. Could be `active` or `blocked`",
+              "type": "string"
+            },
+            "user_identity": {
+              "description": "The user identity, could be MSISDN, user name or email address",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "user_identity",
+            "id"
+          ],
+          "title": "User",
+          "type": "object"
+        },
+        "BatchDeleteRequest": {
+          "description": "Request body for deleting linked accounts by batch",
+          "example": {
+            "bank_provider_id": 5,
+            "eme_provider_id": 4,
+            "identities": [
+              "2002234567"
+            ],
+            "identity_type": "account_alias"
+          },
+          "properties": {
+            "bank_provider_id": {
+              "description": "The bank provider id of the linked accounts to be deleted",
+              "type": "integer"
+            },
+            "eme_provider_id": {
+              "description": "The EME provider id of the linked accounts to be deleted",
+              "type": "integer"
+            },
+            "identities": {
+              "$ref": "#/components/schemas/Identities",
+              "description": "List of identities"
+            },
+            "identity_type": {
+              "description": "The identitity type used for deleting link accounts, could be: - account, - account_alias",
+              "type": "string"
+            }
+          },
+          "required": [
+            "bank_provider_id",
+            "eme_provider_id",
+            "identities",
+            "identity_type"
+          ],
+          "title": "Batch delete",
+          "type": "object"
+        },
+        "LinkedAccountRequest": {
+          "description": "Link account",
+          "example": {
+            "account": "123412341234",
+            "account_details": {
+              "code_service": "3",
+              "devise": "952",
+              "key": "CCLABKI3",
+              "libelle": "My orange money wallet",
+              "partner_id": 5
+            },
+            "bank_provider_id": 2,
+            "eme_provider_id": 1,
+            "eme_provider_sub_id": 1,
+            "validation_method_id": 1
+          },
+          "properties": {
+            "account": {
+              "description": "The account to be linked, could be a bank account or an EME account",
+              "type": "string"
+            },
+            "account_details": {
+              "$ref": "#/components/schemas/Account_details",
+              "description": "The details of the account if any. The fields would be different for different partners"
+            },
+            "bank_provider_id": {
+              "description": "The bank provider id",
+              "type": "integer"
+            },
+            "eme_provider_id": {
+              "description": "The EME provider id",
+              "type": "integer"
+            },
+            "eme_provider_sub_id": {
+              "description": "The sub wallet id of the EME provider",
+              "type": "integer"
+            },
+            "validation_method_id": {
+              "description": "The account validation method id. Could be:\n1 - manually validation via token\n2 - automatically validation via matching user info\n3 - External linkage\n4 - No validation",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "validation_method_id",
+            "account",
+            "bank_provider_id",
+            "eme_provider_id"
+          ],
+          "title": "Link account request body",
+          "type": "object"
+        },
+        "LinkedPartnerItems": {
+          "description": "Linked partner item",
+          "items": {
+            "$ref": "#/components/schemas/LinkedPartnerItem"
+          },
+          "title": "Linked partner item",
+          "type": "array"
+        },
+        "LinkedPartnerPair": {
+          "description": "A linked partner pair",
+          "example": {
+            "id": 1,
+            "partner_bank": {
+              "allow_pending_identical_transaction": false,
+              "bic_code": "MYRIFRPA",
+              "country_code": 100,
+              "id": 2,
+              "name": "EcoBank",
+              "type": "Bank"
+            },
+            "partner_eme": {
+              "allow_pending_identical_transaction": true,
+              "bic_code": "MYRIFRPA",
+              "country_code": 100,
+              "id": 1,
+              "name": "MTN",
+              "type": "EME"
+            },
+            "validation_method_id": 1
+          },
+          "properties": {
+            "id": {
+              "description": "The id of a linked parter pair",
+              "type": "integer"
+            },
+            "partner_bank": {
+              "$ref": "#/components/schemas/Partner",
+              "description": "The bank partner"
+            },
+            "partner_eme": {
+              "$ref": "#/components/schemas/Partner",
+              "description": "The EME partner"
+            },
+            "validation_method_id": {
+              "default": 1,
+              "description": "The account validation method id. Could be:\n1 - manually validation via token\n2 - automatically validation via matching user info",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "validation_method_id",
+            "partner_eme",
+            "partner_bank",
+            "id"
+          ],
+          "title": "Linked partner",
+          "type": "object"
+        },
+        "Account_details": {
+          "description": "Details of an account",
+          "properties": {
+            "active_date": {
+              "description": "The active date",
+              "type": "string"
+            },
+            "code_service": {
+              "description": "The code of the service",
+              "type": "string"
+            },
+            "devise": {
+              "description": "The currency number",
+              "type": "string"
+            },
+            "key": {
+              "description": "The activation key",
+              "type": "string"
+            },
+            "libelle": {
+              "description": "The account name",
+              "type": "string"
+            },
+            "partner_id": {
+              "description": "The id of the partner where the account is from",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "partner_id"
+          ],
+          "title": "Account details",
+          "type": "object"
+        },
+        "Tokens": {
+          "description": "The token list",
+          "items": {
+            "$ref": "#/components/schemas/Token"
+          },
+          "title": "Tokens",
+          "type": "array"
+        },
+        "UsersResponse": {
+          "description": "The user list",
+          "example": {
+            "total_count": 1,
+            "users": [
+              {
+                "id": "q231232weq-3123123-2313",
+                "status": "active",
+                "user_identity": "123456789"
+              }
+            ]
+          },
+          "properties": {
+            "total_count": {
+              "description": "The total count of the transaction",
+              "type": "integer"
+            },
+            "users": {
+              "$ref": "#/components/schemas/UserItems",
+              "description": "The transaction details"
+            }
+          },
+          "required": [
+            "users",
+            "total_count"
+          ],
+          "title": "UsersResponse",
+          "type": "object"
+        },
+        "UserItems": {
+          "description": "The user list",
+          "items": {
+            "$ref": "#/components/schemas/User"
+          },
+          "title": "Users",
+          "type": "array"
+        },
+        "VersionResponse": {
+          "description": "The version of the B2W core logic application",
+          "example": {
+            "api_version": "v0.1",
+            "version": "v0.1"
+          },
+          "properties": {
+            "api_version": {
+              "description": "The API version",
+              "type": "string"
+            },
+            "version": {
+              "description": "Application version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "api_version",
+            "version"
+          ],
+          "title": "Version",
+          "type": "object"
+        },
+        "UpdateLinkedPartnerRequest": {
+          "description": "Request for updating a linked partner",
+          "example": {
+            "validation_method_id": 2
+          },
+          "properties": {
+            "validation_method_id": {
+              "description": "The account validation method id. Could be:\n1 - manually validation via token\n2 - automatically validation via matching user info",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "validation_method_id"
+          ],
+          "title": "Update linked partner request body",
+          "type": "object"
+        },
+        "EME_provider": {
+          "description": "Details of an EME provider",
+          "properties": {
+            "country_code": {
+              "description": "The country code of the provider",
+              "type": "integer"
+            },
+            "id": {
+              "description": "The id of the provider",
+              "type": "integer"
+            },
+            "name": {
+              "description": "The name of the provider",
+              "type": "string"
+            },
+            "sub_id": {
+              "description": "The sub id of the provider, for example, a sub wallet id",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "country_code",
+            "name",
+            "id"
+          ],
+          "title": "EME provider",
+          "type": "object"
+        },
+        "UserRequest": {
+          "description": "A user",
+          "example": {
+            "status": "active",
+            "user_identity": "123456789"
+          },
+          "properties": {
+            "status": {
+              "description": "The user status. Could be `active` or `blocked`, default to `active`.",
+              "type": "string"
+            },
+            "user_identity": {
+              "description": "The user identity, could be MSISDN, user name or email address",
+              "type": "string"
+            }
+          },
+          "required": [
+            "user_identity"
+          ],
+          "title": "User request body",
+          "type": "object"
+        },
+        "FakeAccount": {
+          "description": "Fake account details",
+          "example": {
+            "account_id": "2312312312312312221",
+            "email": "email@email.com",
+            "first_name": "Jim",
+            "last_name": "Green",
+            "partner_id": 1,
+            "phone_number": "231313123123"
+          },
+          "properties": {
+            "account_id": {
+              "description": "Account",
+              "type": "string"
+            },
+            "email": {
+              "description": "email",
+              "type": "string"
+            },
+            "first_name": {
+              "description": "First name",
+              "type": "string"
+            },
+            "last_name": {
+              "description": "Last name",
+              "type": "string"
+            },
+            "partner_id": {
+              "description": "The partner id",
+              "type": "integer"
+            },
+            "phone_number": {
+              "description": "Phone number",
+              "type": "string"
+            }
+          },
+          "required": [
+            "account_id",
+            "phone_number",
+            "email",
+            "last_name",
+            "first_name",
+            "partner_id"
+          ],
+          "title": "Fake account",
+          "type": "object"
+        },
+        "Transaction_continue": {
+          "description": "The body of the transaction to be continued",
+          "example": {
+            "account_alias": "BNKSXTCJ10591968295915",
+            "amount": 55,
+            "currency": "EUR",
+            "external_request_id": "external_id",
+            "partner_id": "1",
+            "receiver_partner_id": 44,
+            "role": "receiver",
+            "sender_partner_id": 45,
+            "type": "W2B"
+          },
+          "properties": {
+            "account": {
+              "description": "Bank or EME account. Needed when \"external_request_id\" is not provided and \"account_alias\" is not provided",
+              "type": "string"
+            },
+            "account_alias": {
+              "description": "Alias of a Bank or EME account Needed when \"external_request_id\" is not provided and \"account\" is not provided",
+              "type": "string"
+            },
+            "amount": {
+              "description": "The amount of the transaction, need to be integer in the minimum currency unit. Needed when \"external_request_id\" is not provided",
+              "type": "integer"
+            },
+            "currency": {
+              "description": "The currency of the transaction. Needed when \"external_request_id\" is not provided",
+              "type": "string"
+            },
+            "external_request_id": {
+              "description": "The external transaction id. Needed when \"external_request_id\" is not provided",
+              "type": "string"
+            },
+            "partner_id": {
+              "description": "The id of the partner that will handle the transaction",
+              "type": "string"
+            },
+            "receiver_partner_id": {
+              "description": "The partner id of the receiver account. Needed when \"external_request_id\" is not provided",
+              "type": "string"
+            },
+            "role": {
+              "description": "The role of the account",
+              "enum": [
+                "sender",
+                "receiver"
+              ],
+              "type": "string"
+            },
+            "sender_partner_id": {
+              "description": "The partner id of the sender account. Needed when \"external_request_id\" is not provided",
+              "type": "string"
+            },
+            "type": {
+              "description": "The type of the transaction, \"B2W\", \"B2AW\" or \"W2B\". Needed when \"external_request_id\" is not provided",
+              "type": "string"
+            }
+          },
+          "required": [
+            "role",
+            "partner_id"
+          ],
+          "title": "Transaction continue body",
+          "type": "object"
+        },
+        "Error_500": {
+          "description": "Internal server error with status code 500",
+          "example": {
+            "errors": "error details"
+          },
+          "title": "500 error",
+          "type": "object"
+        },
+        "Identity": {
+          "description": "Account or account_alias that could identify a linked account",
+          "example": {
+            "identity": "2002234567"
+          },
+          "properties": {
+            "identity": {
+              "description": "The user identity",
+              "type": "string"
+            }
+          },
+          "required": [
+            "identity"
+          ],
+          "title": "Linked account identity",
+          "type": "object"
+        },
+        "CreateTransactionRequest": {
+          "description": "Create a transaction",
+          "example": {
+            "allow_pending_identical_transaction": false,
+            "amount": 500,
+            "currency": "EUR",
+            "metadata": {
+              "comment": "Monthly transfer"
+            },
+            "mode": "normal",
+            "receiver_account": "132131231311212",
+            "receiver_partner_id": 1,
+            "receiver_partner_sub_id": 0,
+            "sender_account": "521313133",
+            "sender_partner_id": 1,
+            "sender_partner_sub_id": 0,
+            "type": "B2W",
+            "user_id": "66345c38-f532-4625-9e87-5fdeb4e7130f"
+          },
+          "properties": {
+            "allow_pending_identical_transaction": {
+              "description": "If pending identical transactions with same sender, receiver, amount and curreny are alloewed, default to true",
+              "enum": [
+                "true",
+                "false"
+              ],
+              "type": "boolean"
+            },
+            "amount": {
+              "description": "The amount of a transaction",
+              "type": "integer"
+            },
+            "currency": {
+              "description": "The currency of a transaction",
+              "type": "string"
+            },
+            "metadata": {
+              "description": "Object for additional info of the transfer, like transfer comment",
+              "type": "object"
+            },
+            "mode": {
+              "description": "The mode for handling the transaction, could be \"normal\", \"bank-initiated\", default to \"normal\"",
+              "enum": [
+                "normal",
+                "bank-initiated"
+              ],
+              "type": "string"
+            },
+            "receiver_account": {
+              "description": "The receiver account",
+              "type": "string"
+            },
+            "receiver_partner_id": {
+              "description": "The partner id of the receiver",
+              "type": "integer"
+            },
+            "receiver_partner_sub_id": {
+              "description": "The partner sub id of the receiver if any. For example, the id for a\n              sub wallet id",
+              "type": "integer"
+            },
+            "sender_account": {
+              "description": "The sender account",
+              "type": "string"
+            },
+            "sender_partner_id": {
+              "description": "The partner id of the sender",
+              "type": "integer"
+            },
+            "sender_partner_sub_id": {
+              "description": "The partner sub id of the sender if any. For example, the id for a\n              sub wallet id",
+              "type": "integer"
+            },
+            "type": {
+              "description": "The type of a transaction",
+              "type": "string"
+            },
+            "user_id": {
+              "description": "The id of the user who initiates the transaction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "currency",
+            "amount",
+            "receiver_account",
+            "receiver_partner_id",
+            "sender_account",
+            "sender_partner_id",
+            "user_id",
+            "type"
+          ],
+          "title": "Create a transaction",
+          "type": "object"
+        },
+        "Error_403": {
+          "description": "Forbidden",
+          "title": "403 error",
+          "type": "object"
+        },
+        "Error_422": {
+          "description": "Parameters error with status code 422",
+          "example": {
+            "errors": {
+              "type": [
+                "can't be blank"
+              ]
+            }
+          },
+          "title": "422 error",
+          "type": "object"
+        },
+        "PartnersForLinking": {
+          "description": "The partners to be linked",
+          "example": {
+            "bank_id": 2,
+            "eme_id": 1,
+            "validation_method_id": 1
+          },
+          "properties": {
+            "bank_id": {
+              "description": "The partner id to be linked",
+              "type": "integer"
+            },
+            "eme_id": {
+              "description": "The partner id to link",
+              "type": "integer"
+            },
+            "validation_method_id": {
+              "default": 1,
+              "description": "The account validation method id. Could be:\n1 - manually validation via token\n2 - automatically validation via matching user info\n3 - External registration without KYC check",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "bank_id",
+            "eme_id"
+          ],
+          "title": "Link partners request body",
+          "type": "object"
+        },
+        "Update_transaction_status": {
+          "description": "The body of the update transaction status callback",
+          "example": {
+            "external_request_id": "external_id",
+            "partner_id": 1,
+            "status": "success"
+          },
+          "properties": {
+            "external_request_id": {
+              "description": "The external id of a transaction",
+              "type": "string"
+            },
+            "partner_id": {
+              "description": "The id of the partner whose transaction has update",
+              "type": "string"
+            },
+            "status": {
+              "description": "The status of a transaction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "external_request_id",
+            "partner_id"
+          ],
+          "title": "Update transaction status body",
+          "type": "object"
+        },
+        "Error_401": {
+          "description": "Unauthorized",
+          "title": "401 error",
+          "type": "object"
+        },
+        "BatchDeleteResponse": {
+          "description": "Response body for deleting linked accounts by batch",
+          "example": {
+            "deleted": [
+              "2002234568"
+            ],
+            "failed": [
+              "2002234567"
+            ]
+          },
+          "properties": {
+            "deleted": {
+              "$ref": "#/components/schemas/Identities",
+              "description": "List of identities"
+            },
+            "failed": {
+              "$ref": "#/components/schemas/Identities",
+              "description": "List of identities"
+            }
+          },
+          "required": [
+            "failed",
+            "deleted"
+          ],
+          "title": "Batch delete response",
+          "type": "object"
+        },
+        "TransactionItems": {
+          "description": "The transaction list",
+          "items": {
+            "$ref": "#/components/schemas/TransactionItem"
+          },
+          "title": "Transactions",
+          "type": "array"
+        },
+        "ValidationMethods": {
+          "description": "List of existing validation methods",
+          "items": {
+            "$ref": "#/components/schemas/ValidationMethod"
+          },
+          "title": "Validation Method list",
+          "type": "array"
+        },
+        "LinkedAccount": {
+          "description": "Response of a linked account",
+          "example": {
+            "account": "12341234123456",
+            "account_alias": "BANKIDAZ01234567891011",
+            "bank_provider": {
+              "country_code": 100,
+              "id": 3,
+              "name": "eco_bank"
+            },
+            "eme_provider": {
+              "country_code": 100,
+              "id": 4,
+              "name": "MTN",
+              "sub_id": 0
+            },
+            "id": 1,
+            "status": "approved",
+            "token": "shK0ZQdJ",
+            "user_id": "66345c38-f532-4625-9e87-5fdeb4e7130f"
+          },
+          "properties": {
+            "account": {
+              "description": "The account to be linked, could be a bank account or an EME account",
+              "type": "string"
+            },
+            "account_alias": {
+              "description": "The account alias generated during the account linkage if any",
+              "type": "string"
+            },
+            "bank_provider": {
+              "$ref": "#/components/schemas/Bank_provider",
+              "description": "The bank provider"
+            },
+            "eme_provider": {
+              "$ref": "#/components/schemas/EME_provider",
+              "description": "The EME provider"
+            },
+            "id": {
+              "description": "The id of a linked account",
+              "type": "integer"
+            },
+            "status": {
+              "description": "The status of a linked account, could be:\n- `approved`\n- `rejected`\n- `pending`\n- `suspended`",
+              "type": "string"
+            },
+            "token": {
+              "description": "The token of a linked account",
+              "type": "string"
+            },
+            "user_id": {
+              "description": "The user id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "bank_provider",
+            "eme_provider",
+            "account",
+            "user_id",
+            "status",
+            "id"
+          ],
+          "title": "A linked account",
+          "type": "object"
+        },
+        "Error_404": {
+          "description": "Resource not found error with status code 404",
+          "example": {
+            "errors": "error details"
+          },
+          "title": "404 error",
+          "type": "object"
+        },
+        "Bank_provider": {
+          "description": "Details of an bank provider",
+          "properties": {
+            "country_code": {
+              "description": "The country code of the provider",
+              "type": "integer"
+            },
+            "id": {
+              "description": "The id of the provider",
+              "type": "integer"
+            },
+            "name": {
+              "description": "The name of the provider",
+              "type": "string"
+            }
+          },
+          "required": [
+            "country_code",
+            "name",
+            "id"
+          ],
+          "title": "Bank provider",
+          "type": "object"
+        },
+        "LinkedPartnerItem": {
+          "description": "A linked partner item",
+          "example": {
+            "id": 1,
+            "partner": {
+              "allow_pending_identical_transaction": true,
+              "bic_code": "MYRIFRPA",
+              "country_code": 100,
+              "id": 2,
+              "name": "EcoBank",
+              "type": "Bank"
+            },
+            "validation_method": {
+              "description": "The account linkage will be manually validated via token",
+              "id": 1,
+              "name": "Manual validation with token"
+            }
+          },
+          "properties": {
+            "id": {
+              "description": "The id of a linked parter pair",
+              "type": "integer"
+            },
+            "partner": {
+              "$ref": "#/components/schemas/Partner",
+              "description": "The linked partner"
+            },
+            "validation_method": {
+              "$ref": "#/components/schemas/ValidationMethod",
+              "description": "The account validation method. Could be:\n1 - manually validation via token\n2 - automatically validation via matching user info"
+            }
+          },
+          "required": [
+            "partner",
+            "validation_method",
+            "id"
+          ],
+          "title": "A Linked partner item",
+          "type": "object"
+        },
+        "Token": {
+          "description": "Response of a generated token",
+          "example": {
+            "bank_provider": {
+              "country_code": 100,
+              "id": 3,
+              "name": "eco_bank"
+            },
+            "eme_provider": {
+              "country_code": 100,
+              "id": 4,
+              "name": "MTN",
+              "sub_id": 0
+            },
+            "id": 1,
+            "status": "pending",
+            "token": "shK0ZQdJ",
+            "user_identity": "2002234567"
+          },
+          "properties": {
+            "bank_provider": {
+              "$ref": "#/components/schemas/Bank_provider",
+              "description": "The bank provider"
+            },
+            "eme_provider": {
+              "$ref": "#/components/schemas/EME_provider",
+              "description": "The EME provider"
+            },
+            "id": {
+              "description": "The id of a generated token",
+              "type": "integer"
+            },
+            "status": {
+              "description": "The status of the account to link, could be `approved`, `rejected`, `pending`, `suspended`",
+              "type": "string"
+            },
+            "token": {
+              "description": "A generated token for linking account",
+              "type": "string"
+            },
+            "user_identity": {
+              "description": "The user identity",
+              "type": "string"
+            }
+          },
+          "required": [
+            "bank_provider",
+            "eme_provider",
+            "status",
+            "user_identity",
+            "id"
+          ],
+          "title": "Token",
+          "type": "object"
+        },
+        "LinkedAccountsResponse": {
+          "description": "The linked account list returned in response",
+          "example": {
+            "linked_accounts": [
+              {
+                "account": "12341234123456",
+                "account_alias": "BANKIDAZ01234567891011",
+                "bank_provider": {
+                  "country_code": 100,
+                  "id": 3,
+                  "name": "eco_bank"
+                },
+                "eme_provider": {
+                  "country_code": 100,
+                  "id": 4,
+                  "name": "MTN",
+                  "sub_id": 0
+                },
+                "id": 1,
+                "status": "approved",
+                "token": "shK0ZQdJ",
+                "user_id": "66345c38-f532-4625-9e87-5fdeb4e7130f"
+              }
+            ],
+            "total_count": 1
+          },
+          "properties": {
+            "total_count": {
+              "description": "The total count of the linked accounts",
+              "type": "integer"
+            },
+            "linked_accounts": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/LinkedAccount"
+              }
+            }
+          },
+          "required": [
+            "total_count"
+          ],
+          "title": "LinkedAccountsResponse",
+          "type": "object"
+        },
+        "SubTransactionDetailsItems": {
+          "description": "The sub transaction list with details",
+          "items": {
+            "$ref": "#/components/schemas/SubTransactionDetailsItem"
+          },
+          "title": "Sub transaction details",
+          "type": "array"
+        },
+        "UpdateTransactionRequest": {
+          "description": "Request for updating a transaction item",
+          "example": {
+            "status": "success"
+          },
+          "properties": {
+            "status": {
+              "description": "Status of a transaction item, could be `success`, `pending`, `failed`",
+              "enum": [
+                "success",
+                "pending",
+                "failed"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "status"
+          ],
+          "title": "Update transaction request body",
+          "type": "object"
+        },
+        "LinkedAccounts": {
+          "description": "The linked accounts list of a given user",
+          "items": {
+            "$ref": "#/components/schemas/LinkedAccount"
+          },
+          "title": "Linked account list",
+          "type": "array"
+        },
+        "Error_400": {
+          "description": "Bad request error with status code 400",
+          "example": {
+            "errors": "error details"
+          },
+          "title": "400 error",
+          "type": "object"
+        },
+        "Transaction_partner": {
+          "description": "Details of a transaction partner",
+          "properties": {
+            "country_code": {
+              "description": "The country code of the partner",
+              "type": "integer"
+            },
+            "id": {
+              "description": "The id of the partner",
+              "type": "integer"
+            },
+            "name": {
+              "description": "The name of the partner",
+              "type": "string"
+            },
+            "sub_id": {
+              "description": "The sub id of the partner, for example, a specified wallet id",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "country_code",
+            "name",
+            "id"
+          ],
+          "title": "Transaction partner",
+          "type": "object"
+        },
+        "TransactionItem": {
+          "description": "Response of a transaction item",
+          "example": {
+            "amount": 1000,
+            "created_at": "2024-07-07 13:55:00",
+            "id": "66345c38-f532-4625-9e87-5fdeb4e7130f",
+            "metadata": {
+              "comment": "Monthly transfer"
+            },
+            "receiver_account": "1234567890",
+            "receiver_partner": {
+              "country_code": 100,
+              "id": 3,
+              "name": "eco_bank"
+            },
+            "sender_account": "1234567890",
+            "sender_partner": {
+              "country_code": 100,
+              "id": 4,
+              "name": "MTN",
+              "sub_id": 0
+            },
+            "status": "success",
+            "type": "W2B",
+            "updated_at": "2024-07-07 13:56:11",
+            "user_id": "62d372c4-18d9-42db-aaff-f43259a36678"
+          },
+          "properties": {
+            "amount": {
+              "description": "The amount of the transaction, unit in cents",
+              "type": "integer"
+            },
+            "created_at": {
+              "description": "The time when the transaction occurs",
+              "type": "string"
+            },
+            "currency": {
+              "description": "The currency of the transaction",
+              "type": "string"
+            },
+            "fee": {
+              "description": "The fee of the transaction",
+              "type": "integer"
+            },
+            "id": {
+              "description": "The id of a transaction item",
+              "type": "integer"
+            },
+            "metadata": {
+              "description": "Object for additional info of the transfer, like transfer comment",
+              "type": "object"
+            },
+            "receiver_account": {
+              "description": "The payee of the transaction",
+              "type": "string"
+            },
+            "receiver_partner": {
+              "$ref": "#/components/schemas/Transaction_partner",
+              "description": "The payee partner"
+            },
+            "sender_account": {
+              "description": "The payer of the transaction",
+              "type": "string"
+            },
+            "sender_partner": {
+              "$ref": "#/components/schemas/Transaction_partner",
+              "description": "The payer partner"
+            },
+            "status": {
+              "description": "The status of the transaction, could be `success`, `pending`, `failed`",
+              "type": "string"
+            },
+            "type": {
+              "description": "The type of a transaction item, could be `B2W`, `W2B`",
+              "type": "string"
+            },
+            "updated_at": {
+              "description": "The time when the transaction occurs",
+              "type": "string"
+            },
+            "user_id": {
+              "description": "The id of the user who initiates the transaction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "created_at",
+            "status",
+            "fee",
+            "currency",
+            "amount",
+            "receiver_account",
+            "sender_account",
+            "receiver_partner",
+            "sender_partner",
+            "user_id",
+            "type",
+            "id"
+          ],
+          "title": "A transaction item",
+          "type": "object"
+        },
+        "PartnerRequest": {
+          "description": "A partner",
+          "example": {
+            "bic_code": "MYRIFRPA",
+            "country_code": 100,
+            "name": "MTN",
+            "type": "EME"
+          },
+          "properties": {
+            "bic_code": {
+              "description": "The swift code of the partner if any",
+              "type": "string"
+            },
+            "country_code": {
+              "description": "The country code of the partner",
+              "type": "string"
+            },
+            "name": {
+              "description": "The partner name",
+              "type": "string"
+            },
+            "type": {
+              "description": "The partner type. Could be `EME` or `Bank`",
+              "type": "string"
+            }
+          },
+          "required": [
+            "country_code",
+            "type",
+            "name"
+          ],
+          "title": "Partner request body",
+          "type": "object"
+        },
+        "GenerateTokenRequest": {
+          "description": "Generate token",
+          "example": {
+            "bank_provider_id": 2,
+            "eme_provider_id": 1,
+            "eme_provider_sub_id": 1
+          },
+          "properties": {
+            "bank_provider_id": {
+              "description": "The bank provider id",
+              "type": "integer"
+            },
+            "eme_provider_id": {
+              "description": "The EME provider id",
+              "type": "integer"
+            },
+            "eme_provider_sub_id": {
+              "description": "The sub wallet id of the EME provider",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "bank_provider_id",
+            "eme_provider_id"
+          ],
+          "title": "Generate token request body",
+          "type": "object"
+        },
+        "SubTransactionDetailsItem": {
+          "description": "Response of a sub transaction item with details",
+          "example": {
+            "created_at": "2024-07-07 13:55:00",
+            "error_id": 1,
+            "id": "66345c38-f532-4625-9e87-5fdeb4e7130f",
+            "partner": {
+              "country_code": 100,
+              "id": 4,
+              "name": "MTN",
+              "sub_id": 0
+            },
+            "receiver_account": "1212121212",
+            "rollback_reason": "error in Bank side",
+            "sender_account": "1212121212",
+            "status": "success",
+            "transaction_id": "55345c38-f532-4625-9e87-5fdeb4e7130f",
+            "updated_at": "2024-07-07 13:56:11"
+          },
+          "properties": {
+            "created_at": {
+              "description": "The time when the transaction occurs",
+              "type": "string"
+            },
+            "error_id": {
+              "description": "The error id",
+              "type": "string"
+            },
+            "id": {
+              "description": "The id of a transaction item",
+              "type": "string"
+            },
+            "mode": {
+              "description": "The mode of a sub transaction",
+              "enum": [
+                "bank-initiated",
+                "callback",
+                "cancel",
+                "withdraw",
+                "deposit"
+              ],
+              "type": "string"
+            },
+            "partner": {
+              "$ref": "#/components/schemas/Transaction_partner",
+              "description": "The partner when the sub transaction is done"
+            },
+            "receiver_account": {
+              "description": "The counter party of a sub transaction",
+              "type": "string"
+            },
+            "rollback_reason": {
+              "description": "The reason of rollback if any",
+              "type": "string"
+            },
+            "sender_account": {
+              "description": "The counter party of a sub transaction",
+              "type": "string"
+            },
+            "status": {
+              "description": "The status of a sub transaction item, could be `success`, `pending`, `failed`",
+              "type": "string"
+            },
+            "transaction_id": {
+              "description": "The parent transaction id of the sub transaction item",
+              "type": "string"
+            },
+            "updated_at": {
+              "description": "The time when the transaction occurs",
+              "type": "string"
+            }
+          },
+          "required": [
+            "created_at",
+            "mode",
+            "rollback_reason",
+            "error_id",
+            "status",
+            "receiver_account",
+            "sender_account",
+            "partner",
+            "transaction_id",
+            "id"
+          ],
+          "title": "A sub transaction item with details",
+          "type": "object"
+        },
+        "ValidationMethod": {
+          "description": "Response of a validation method",
+          "example": {
+            "description": "The account linkage will be manually validated via token",
+            "id": 1,
+            "name": "Manual validation with token"
+          },
+          "properties": {
+            "description": {
+              "description": "Description details of a validation method",
+              "type": "string"
+            },
+            "id": {
+              "description": "The id of a validation method",
+              "type": "integer"
+            },
+            "name": {
+              "description": "The name of the validation method",
+              "type": "string"
+            }
+          },
+          "required": [
+            "description",
+            "name",
+            "id"
+          ],
+          "title": "A validation method",
+          "type": "object"
+        },
+        "Transaction_handling_response": {
+          "description": "The response of the transaction to be continued",
+          "example": {
+            "custom_reference": "2502190111166345c38-f532-4625-9e87-5fdeb4e7130f",
+            "external_transaction_id": "external_id",
+            "status": "success",
+            "transaction_id": "66345c38-f532-4625-9e87-5fdeb4e7130f"
+          },
+          "properties": {
+            "custom_reference": {
+              "description": "Custom reference of a transaction",
+              "type": "string"
+            },
+            "external_transaction_id": {
+              "description": "The external transaction id of a transaction",
+              "type": "string"
+            },
+            "status": {
+              "description": "The status of a transaction",
+              "type": "string"
+            },
+            "transaction_id": {
+              "description": "The id of a transaction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "custom_reference",
+            "external_transaction_id",
+            "status",
+            "transaction_id"
+          ],
+          "title": "Transaction handling response",
+          "type": "object"
+        },
+        "Identities": {
+          "description": "List of identities",
+          "items": {
+            "$ref": "#/components/schemas/Identity"
+          },
+          "title": "Identities",
+          "type": "array"
+        }
+      }
+    }
+  }

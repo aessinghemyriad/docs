@@ -7,8 +7,13 @@
   },
   "servers": [
     {
-      "url": "/api/",
+      "url": "api.mgrp.mobi",
       "description": "Base URL for the Payment Service API"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
     }
   ],
   "tags": [
@@ -18,70 +23,6 @@
     }
   ],
   "paths": {
-    "/v1/payments": {
-      "post": {
-        "tags": [
-          "Payment"
-        ],
-        "summary": "Initiate a new payment request",
-        "description": "This endpoint allows merchants to initiate a new payment request by providing payment details such as amount, currency, payer wallet, and payment provider. The response includes a transaction ID that can be used to track the status of the payment.",
-        "operationId": "CreatePaymentRequest",
-        "parameters": [
-          {
-            "name": "X-Userinfo-Merchant-Id",
-            "in": "header",
-            "description": "ID of the merchant performing the request. This is a UUID.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "X-Userinfo-Customer-Id",
-            "in": "header",
-            "description": "ID of the customer performing the request. Optional if the merchant is acting on behalf of a customer.",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Details of the payment request, including amount, currency, payer wallet, and payment provider.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PaymentRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "202": {
-            "description": "The payment request has been accepted and is being processed. A transaction ID is returned to track the status.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TransactionResponse"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "An error occurred while processing the payment request.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "x-codegen-request-body-name": "payment_request"
-      }
-    },
     "/v1/transactions/{id}": {
       "get": {
         "tags": [
@@ -142,68 +83,16 @@
           }
         }
       }
-    },
-    "/v1/health": {
-      "get": {
-        "tags": [
-          "Payment"
-        ],
-        "summary": "Perform a health check",
-        "description": "This endpoint checks the health of the Payment Service API. A successful response indicates that the service is operational.",
-        "operationId": "HealthCheck",
-        "responses": {
-          "200": {
-            "description": "The API is healthy and operational.",
-            "content": {}
-          },
-          "500": {
-            "description": "The API encountered an internal error or is unavailable.",
-            "content": {}
-          }
-        }
-      }
     }
   },
   "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }, 
     "schemas": {
-      "PaymentRequest": {
-        "required": [
-          "amount",
-          "callback",
-          "currency",
-          "payer_wallet",
-          "payment_provider"
-        ],
-        "type": "object",
-        "description": "Details required to initiate a payment request.",
-        "properties": {
-          "payment_provider": {
-            "type": "string",
-            "format": "uuid",
-            "description": "The ID of the payment provider handling the transaction."
-          },
-          "payer_wallet": {
-            "type": "string",
-            "description": "The wallet ID of the payer initiating the payment."
-          },
-          "amount": {
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32",
-            "description": "The transaction amount in the smallest unit of the specified currency (e.g., cents for USD)."
-          },
-          "currency": {
-            "pattern": "^[A-Z]{3}$",
-            "type": "string",
-            "description": "ISO 4217 currency code representing the currency of the transaction (e.g., USD, EUR)."
-          },
-          "callback": {
-            "type": "string",
-            "format": "uri",
-            "description": "The callback URL to receive payment status updates."
-          }
-        }
-      },
       "TransactionResponse": {
         "required": [
           "amount",
