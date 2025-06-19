@@ -23,6 +23,70 @@
     }
   ],
   "paths": {
+    "/v1/payments": {
+      "post": {
+        "tags": [
+          "Payment"
+        ],
+        "summary": "Create a new payment request",
+        "description": "Initiate a new payment request",
+        "operationId": "CreatePaymentRequest",
+        "parameters": [
+          {
+            "name": "X-Userinfo-Merchant-Id",
+            "in": "header",
+            "description": "ID of the merchant performing the request",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "X-Userinfo-Customer-Id",
+            "in": "header",
+            "description": "ID of the customer performing the request",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Payment request details",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Payment request is being processed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "An error occurred",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "payment_request"
+      }
+    },
     "/v1/transactions/{id}": {
       "get": {
         "tags": [

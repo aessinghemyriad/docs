@@ -7,7 +7,10 @@
     "light": "#85d4ee",
     "dark": "#3c51a3"
   },
-  "favicon": "/favicon.svg",
+  "favicon": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
 
   "api": {
     "mdx": {
@@ -49,8 +52,8 @@
             "group": "Getting Started",
             "pages": [
               "introduction/overview",
-              "introduction/authentication",
-              "introduction/environments"
+              "introduction/using-the-api",
+              "introduction/getting-your-token"
             ]
           },
           {
@@ -58,24 +61,6 @@
             "pages": [
               "introduction/status-code",
               "introduction/rate-limits"
-            ]
-          }
-        ]
-      },
-
-      {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Payment",
-            "pages": [
-              "guides/create-payment"
-            ]
-          },
-          {
-            "group": "Bills",
-            "pages": [
-              "guides/create-payment"
             ]
           }
         ]
@@ -118,8 +103,8 @@
 
     "primary": {
       "type": "button",
-      "label": "My Dashboard",
-      "href": "https://fintech.myriadgroup.com"
+      "label": "Fintech Portal",
+      "href": "https://fintech-portal.mgrp.mobi"
     }
   },
   "footer": {

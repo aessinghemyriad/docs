@@ -1,0 +1,75 @@
+---
+title: Using the API
+description: ""
+---
+
+This guide provides a foundational understanding of how to interact with the Myriad Fintech APIs. 
+By following these principles, you'll be able to construct requests, handle responses, and integrate our services into your applications effectively.
+
+
+## 1. Authentication 
+All requests to the Myriad APIs must be authenticated using a **Bearer Token**. This token identifies your application and authorizes your access to our services.
+
++ Include your API token in the Authorization header of every request: <br />
+`Authorization: Bearer <YOUR_API_TOKEN>`
++ Important: Replace `<YOUR_API_TOKEN>` with the actual token provided to you on the Myriad Fintech webUI. <br />
+
+For a comprehensive guide on how to obtain and manage your API token, please visit the [Getting your token](/introduction/getting-your-token) page.
+
+<br />
+
+## 2. Understanding Request Structure
+Myriad APIs are RESTful, meaning they use standard HTTP methods and conventions.
+
+- **HTTP Methods**:
+    - `GET`: Retrieve data (e.g., fetch details of a biller).
+    - `POST`: Create new resources or perform actions (e.g., initiate a payment).
+    - `PUT`: Update existing resources (replace entirely).
+    - `PATCH`: Partially update existing resources.
+    - `DELETE`: Remove resources.
+- **Headers**:
+    - `Content-Type`: Specify the format of the request body (e.g., `application/json`).
+    - `Accept`: Specify the desired format for the response (e.g., `application/json`).
+    - `Authorization`: Your bearer token (as described above).
+    - Other custom headers may be required for specific endpoints (check the [API Reference](/api-reference/)).
+- **Parameters**:
+    - Path Parameters: Part of the URL path, used to identify specific resources (e.g., `/payments/{id}`).
+    - Query Parameters: Appended to the URL after a `?`, used for filtering, pagination, or optional data (e.g., `/transactions?status=success&limit=10`).
+    - Request Body: For `POST`, `PUT`, and `PATCH` requests, the body typically contains JSON data representing the resource being created or updated.
+
+
+## 5. Handling API Responses
+API responses provide information about the outcome of your request.
+
+- Successful Responses (2xx):
+
+    - A `200 OK` generally indicates a successful request.
+    - A `201 Created` means a new resource was successfully created.
+    - Successful responses typically contain a JSON body with the requested data or confirmation of the action.
+
+        ```json
+        {
+        "success": true,
+        "message": "Payment initiated successfully.",
+        "transactionId": "txn_1234567890abcdef",
+        "status": "PENDING"
+        }
+        ```
+
+
+- Error Responses (4xx, 5xx):
+
+    - When an error occurs, the API will return an appropriate HTTP status code (e.g., `400 Bad Request`, `401 Unauthorized`, `404 Not Found`).
+    - Error responses will typically include a JSON body with an `errorCode` and a `message` to help you understand and debug the issue.
+
+        ```json
+        {
+        "errorCode": "INVALID_ARGUMENT",
+        "message": "The provided amount is outside the allowed range.",
+        "details": [
+            {"field": "amount", "issue": "Value must be between 100 and 100000"}
+        ]
+        }
+        ```
+
+For a detailed list of common error codes and their meanings, refer to the [HTTP Status Codes](/introduction/status-code) page.

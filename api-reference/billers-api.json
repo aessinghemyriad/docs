@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://api.mgrp.mobi/"
+      "url": "https://api.demo.mgrp.mobi/"
     }
   ],
   "security": [

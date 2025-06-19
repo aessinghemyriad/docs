@@ -1,0 +1,36 @@
+---
+title: Getting Your Token
+---
+
+
+To authenticate your API requests, you need to obtain an API token. Follow the steps below to get your token:
+
+## Step 1: Log in to Your Account
+
+1. Navigate to the [Login Page](https://fintech-portal.mgrp.mobi/login).
+2. Enter your credentials and log in to your account. 
+<img height="200" src="/images/login-page.png" />
+
+## Step 2: Access the API Settings
+
+1. Once logged in, go to your account dashboard.
+2. Click on **Settings** in the navigation menu.
+3. Select **API Tokens** from the settings options.
+<img height="200" src="/images/dashboard.png" />
+
+## Step 3: Generate a New Token
+
+1. Click the **Generate Token** button.
+2. Provide a name for your token (e.g., "MyAppToken") for easy identification.
+3. Set the appropriate permissions for the token based on your needs.
+4. Click **Create Token**.
+
+## Step 4: Copy and Save Your Token
+
+- Once the token is generated, copy it immediately.
+- Save it securely in a password manager or environment variable. **Do not share your token** as it provides access to your account.
+
+## Step 5: Use the Token in Your API Requests
+
+Include the token in the `Authorization` header of your API requests:
+<img height="200" src="/images/request.png" />
