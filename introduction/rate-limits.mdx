@@ -2,3 +2,24 @@
 title: Rate Limits
 description: ""
 ---
+
+To ensure fair usage and protect the performance of our APIs, Myriad enforces rate limiting on all incoming requests.
+
+## Limit Per Environment
+
+| Environment | Limit                | Interval        | Burst Allowed |
+|-------------|----------------------|------------------|----------------|
+| Production  | 1000 requests        | per minute       | Yes (up to 200)|
+
+If you exceed the rate limit, you'll receive a `429 Too Many Requests` response.
+
+---
+
+## Example 429 Error Response
+
+```json
+{
+  "status": "error",
+  "code": 429,
+  "message": "Rate limit exceeded. Please try again later."
+}

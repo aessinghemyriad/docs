@@ -1,4 +1,46 @@
 ---
 title: HTTP Status Codes
-description: "The page contains the list of HTTP response status codes that Myriad public APIs return."
 ---
+
+All Myriad APIs follow standard [HTTP status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) conventions. This section provides a list of commonly returned status codes along with guidance to help you interpret responses and troubleshoot issues.
+
+## ✅ Success Codes
+
+| Code | Meaning        | Description                                                                 |
+|------|----------------|-----------------------------------------------------------------------------|
+| 200  | OK             | The request was successful.                                                 |
+| 201  | Created        | A new resource was successfully created.                                    |
+| 202  | Accepted       | The request has been accepted for processing but is not completed yet.      |
+
+## ⚠️ Client Error Codes
+
+These errors indicate a problem with the request from your side.
+
+| Code | Meaning             | Description                                                             |
+|------|---------------------|-------------------------------------------------------------------------|
+| 400  | Bad Request         | The request was malformed or missing required fields.                   |
+| 401  | Unauthorized        | The request lacked valid authentication credentials (missing or invalid token). |
+| 403  | Forbidden           | You are authenticated but do not have permission to access the resource. |
+| 404  | Not Found           | The requested resource does not exist.                                  |
+| 409  | Conflict            | The request conflicts with current state (e.g., duplicate transaction). |
+| 422  | Unprocessable Entity| The server understands the request but it contains invalid data.        |
+
+## 🛑 Server Error Codes
+
+These errors indicate a problem on our side. Please retry later or contact support.
+
+| Code | Meaning                 | Description                                                           |
+|------|-------------------------|-----------------------------------------------------------------------|
+| 429  | Too Many Requests       | You've exceeded the rate limit. Wait and retry using backoff logic.  |
+| 500  | Internal Server Error   | An unexpected error occurred on our side.                             |
+| 502  | Bad Gateway             | Invalid response received from an upstream service.                   |
+| 503  | Service Unavailable     | The server is temporarily down. Try again later.                      |
+| 504  | Gateway Timeout         | The request took too long to process.                                 |
+
+---
+
+### Tips for Troubleshooting
+
+- Always check the **response body** for more detailed error messages.
+- Log both the **status code** and any **error message** returned to help with debugging.
+- If a `5xx` error occurs repeatedly, contact support with your request ID.
